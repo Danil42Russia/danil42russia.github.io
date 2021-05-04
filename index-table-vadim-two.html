@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script src="tyan.js"></script>
+</head>
+<body>
+<table cellPadding="0" cellSpacing="0" id="table">
+</table>
+<script>
+    const WIDTH = 480
+    const HEIGHT = 360
+
+    let table = document.getElementById("table")
+
+    function createTable() {
+        for (let h = 0; h < HEIGHT; h++) {
+            let tr = document.createElement('tr');
+            for (let w = 0; w < WIDTH; w++) {
+                let td = document.createElement('td');
+                td.setAttribute('width', '1')
+                td.setAttribute('height', '1')
+                td.setAttribute('bgcolor', arr[0][h][w])
+
+                tr.appendChild(td)
+            }
+            table.appendChild(tr);
+        }
+    }
+
+    createTable()
+    const tds = document.querySelectorAll('td')
+    for (let f = 0; f < arr.length; f++) {
+        setTimeout(function timer() {
+            for (let h = 0; h < HEIGHT; h++) {
+                for (let w = 0; w < WIDTH; w++) {
+                    tds[h * WIDTH + w].setAttribute('bgcolor', arr[f][h][w])
+                }
+            }
+        }, 0);
+    }
+</script>
+</body>
+</html>
