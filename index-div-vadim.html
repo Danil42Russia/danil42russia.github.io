@@ -1,0 +1,49 @@
+<html>
+<head>
+    <script src="tyan.js"></script>
+    <style>
+        .td {
+            width: 1px;
+            height: 1px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div id="table"></div>
+<script>
+    const WIDTH = 360
+    const HEIGHT = 480
+
+    let table = document.getElementById("table")
+
+    function createTable() {
+        for (let w = 0; w < WIDTH; w++) {
+            let tr = document.createElement('div');
+            tr.className = "tr"
+            for (let h = 0; h < HEIGHT; h++) {
+                let td = document.createElement('div');
+                td.className = "td"
+                td.style.backgroundColor = arr[0][w][h]
+
+                tr.appendChild(td)
+            }
+            table.appendChild(tr);
+        }
+    }
+
+    createTable()
+    for (let f = 0; f < arr.length; f++) {
+        setTimeout(function timer() {
+            for (let w = 0; w < WIDTH; w++) {
+                let tr = table.getElementsByClassName('tr')[w]
+                let td = tr.getElementsByClassName('td')
+                for (let h = 0; h < HEIGHT; h++) {
+                    td[h].style.backgroundColor = arr[f][w][h]
+                }
+            }
+        }, 0);
+    }
+</script>
+</body>
+</html>
